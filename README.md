@@ -8,7 +8,7 @@
  * Created rudimentary <form> with input fields.
  * Got multifile-picker working for image files.
  * Got upload to vgy.me working.
- * Got upload to vgy.me working with user key.
+ * Got upload to vgy.me account working with user key.
  * Got deferred upload of image files working, with Upload button.
  * Form field validation.
  * Form field automatic coloring based on validity.
@@ -24,5 +24,5 @@
  * Styling.
  * Admin authentication.
  * Error handling.
- * Code comments & quality
+ * Code quality review.
  * Test framework.
