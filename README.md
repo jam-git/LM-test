@@ -7,6 +7,7 @@
 *DONE (~1 day):*
  * Learned some AngularJS, read documentation items.
  * Created single-page application using ngRoute.
+ * Works in Firefox.
  * Navigation between the pages.
  * Created vgy.me account and obtained user key.
  * Created rudimentary <form> with input fields.
@@ -26,6 +27,7 @@
  * Admin page, reading and displaying list of form data.
  * Item view page, displaying images.
  * Limit upload to 3 image files.
+ * Cross-browser.
  * Responsive.
  * Styling.
  * Admin authentication.
