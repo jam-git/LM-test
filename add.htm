@@ -1,0 +1,26 @@
+<div>
+
+<h2>Please enter your feedback:</h2>
+
+<form name="feedbackForm" ng-submit="submitForm()">
+  <p>
+    Your email address:<br />
+    <input type="email" ng-model="feedback.email" required="1"></input><br />
+  </p>
+  <p>
+    Your message:<br />
+    <textarea ng-model="feedback.message" required="1"></textarea><br />
+  </p>
+  <p>
+    Attach up to 3 images (optional):<br />
+    <input id="fileupload" type="file" name="file[]" accept="image/*" multiple="1"></input>
+  </p>
+  <p>
+    <input type="submit" value='Submit'/>
+  </p>
+</form>
+
+<p><a href="#admin">Admin</a></p>
+
+</div>
+

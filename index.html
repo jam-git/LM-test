@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.19.2/js/vendor/jquery.ui.widget.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.19.2/js/jquery.iframe-transport.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.19.2/js/jquery.fileupload.min.js"></script>
+
+<script>
+$(function() {
+  $("#fileupload").fileupload({
+    url: "https://vgy.me/upload",
+    singleFileUploads: false,
+    limitMultiFileUploads: 3,
+    formData: { "userkey": "zjuEcWNuVBVZmqdubTkxMxaQuMCzsj4q" },
+    dataType: "json",
+    add: function (e, data) {
+      data.context = $('<button/>').text('Upload')
+        .appendTo(document.body)
+        .click(function () {
+          data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+          data.submit();
+        });
+    },
+    done: function(e, data) {
+      data.context.text('Thank you for your feedback!');
+    }
+  });
+});
+</script>
+
+<script>
+function submitForm(form) {
+  var val = { "email"  : form.email  ,
+              "message": form.message,
+              "file"   : form.file   ,
+              "time"   : getTime()     };
+  var storage = window.localStorage.getItem('feedback');
+  if (!storage) { storage = []; } else { storage = JSON.parse(storage); }
+  storage.append(val);
+  window.localStorage.setItem('feedback', JSON.stringify(storage));
+}
+</script>
+
+<style>
+  input.ng-valid      { background-color:#eeffee; }
+  input.ng-invalid    { background-color:#ffeeee; }
+  textarea.ng-valid   { background-color:#eeffee; }
+  textarea.ng-invalid { background-color:#ffeeee; }
+</style>
+
+</head>
+<body ng-app="myApp"><div ng-view></div>
+
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+
+app.config(function($routeProvider) {
+    $routeProvider
+    .when( "/"     , { templateUrl : "add.htm"   })
+    .when( "/add"  , { templateUrl : "add.htm"   })
+    .when( "/admin", { templateUrl : "admin.htm" })
+    .when( "/item" , { templateUrl : "item.htm"  });
+});
+
+//angular.module("myApp", [])
+//  .controller('SubmitController', ['$scope', function($scope) {
+//    alert('submitting!');    
+//}]);
+
+</script>
+
+</body>
+</html>
