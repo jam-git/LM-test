@@ -2,7 +2,7 @@
 
 *DEPLOYMENT INSTRUCTIONS:*
  * Download the files to a directory.
- * Visit the index.html file.
+ * Visit the index.html file using Firefox.
 
 *DONE (~1 day):*
  * Learned some AngularJS, read documentation items.
