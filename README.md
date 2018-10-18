@@ -1,5 +1,9 @@
 # LM-test
 
+*DEPLOYMENT INSTRUCTIONS:*
+ * Download the files to a directory.
+ * Visit the index.html file.
+
 *DONE (~1 day):*
  * Learned some AngularJS, read documentation items.
  * Created single-page application using ngRoute.
@@ -12,6 +16,7 @@
  * Got deferred upload of image files working, with Upload button.
  * Form field validation.
  * Form field automatic coloring based on validity.
+ * Comments and instructions.
  * Upload to GitHub repo.
  * Got Heroku free account, checked PostgreSQL setup.
 
@@ -20,6 +25,7 @@
  * Storage of form data and image URLs.
  * Admin page, reading and displaying list of form data.
  * Item view page, displaying images.
+ * Limit upload to 3 image files.
  * Responsive.
  * Styling.
  * Admin authentication.
