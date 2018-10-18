@@ -2,8 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8">
+
+<!-- Load AngularJS libraries for single-page application. -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-route.js"></script>
+
+<!-- Load libraries needed for image file upload. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.19.2/js/vendor/jquery.ui.widget.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.19.2/js/jquery.iframe-transport.min.js"></script>
@@ -12,21 +16,21 @@
 <script>
 $(function() {
   $("#fileupload").fileupload({
-    url: "https://vgy.me/upload",
-    singleFileUploads: false,
-    limitMultiFileUploads: 3,
-    formData: { "userkey": "zjuEcWNuVBVZmqdubTkxMxaQuMCzsj4q" },
-    dataType: "json",
+    url: "https://vgy.me/upload",                                 // Destination host for image file uploads.
+    singleFileUploads: false,                                     // Upload multiple files at once.
+    limitMultiFileUploads: 3,                                     // No more than 3 images uploaded at once.
+    formData: { "userkey": "zjuEcWNuVBVZmqdubTkxMxaQuMCzsj4q" },  // So our files all go to the same place (account).
+    dataType: "json",                                             // Data format.
     add: function (e, data) {
-      data.context = $('<button/>').text('Upload')
+      data.context = $('<button/>').text('Upload')                // Add button when an image file has been added.
         .appendTo(document.body)
-        .click(function () {
+        .click(function () {                                      // Indicate upload underway.
           data.context = $('<p/>').text('Uploading...').replaceAll($(this));
-          data.submit();
+          data.submit();                                          // Perform the image files upload.
         });
     },
     done: function(e, data) {
-      data.context.text('Thank you for your feedback!');
+      data.context.text('Thank you for your feedback!');          // Indicate upload completed.
     }
   });
 });
@@ -34,14 +38,14 @@ $(function() {
 
 <script>
 function submitForm(form) {
-  var val = { "email"  : form.email  ,
+  var val = { "email"  : form.email  ,                            // Extract data record needed.
               "message": form.message,
               "file"   : form.file   ,
               "time"   : getTime()     };
-  var storage = window.localStorage.getItem('feedback');
+  var storage = window.localStorage.getItem('feedback');          // Add the new data record to the list of old ones.
   if (!storage) { storage = []; } else { storage = JSON.parse(storage); }
   storage.append(val);
-  window.localStorage.setItem('feedback', JSON.stringify(storage));
+  window.localStorage.setItem('feedback', JSON.stringify(storage));  // Re-store the records, including the new one.
 }
 </script>
 
@@ -53,23 +57,18 @@ function submitForm(form) {
 </style>
 
 </head>
-<body ng-app="myApp"><div ng-view></div>
+<body ng-app="myApp"><div ng-view></div>             <!-- Display the single-page app. -->
 
 <script>
 var app = angular.module("myApp", ["ngRoute"]);
 
 app.config(function($routeProvider) {
     $routeProvider
-    .when( "/"     , { templateUrl : "add.htm"   })
+    .when( "/"     , { templateUrl : "add.htm"   })    // Define the pages of the single-page app.
     .when( "/add"  , { templateUrl : "add.htm"   })
     .when( "/admin", { templateUrl : "admin.htm" })
     .when( "/item" , { templateUrl : "item.htm"  });
 });
-
-//angular.module("myApp", [])
-//  .controller('SubmitController', ['$scope', function($scope) {
-//    alert('submitting!');    
-//}]);
 
 </script>
 
